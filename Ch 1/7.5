@@ -1,0 +1,30 @@
+// 7.5.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+
+double average(double* a, int a_size) {
+	double total = 0;
+
+	//because this way definitely follows the spirit of the problem, haha
+	for (int i = 0; i < a_size; i++) {
+		total += *a;
+		a++;
+	}
+
+	return total / a_size;
+}
+
+int main()
+{
+    //just putting a test case here, problem did not specify inputs so I'm assuming that part's to be done by someone else.
+
+	double double_array[10] = { 1,2,3,4,5,6,7,8,9,10.5 };
+
+	std::cout << average(double_array, 10) << std::endl;
+
+	
+	return 0;
+}
+

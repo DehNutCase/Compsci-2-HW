@@ -1,0 +1,48 @@
+// 4.7.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <math.h>
+
+const double PI = 3.14159265358979323846;
+
+double sphere_volume(double r) {
+	return 4.0 / 3.0 * PI * pow(r, 3);
+}
+
+double sphere_surface(double r) {
+	return 4.0 * PI * pow(r, 2);
+}
+
+double cylinder_volume(double r, double h) {
+	return PI * pow(r, 2) * h;
+}
+
+double cylinder_surface(double r, double h) {
+	return 2.0 * PI * r * h + 2.0 * PI * pow(r, 2);
+}
+
+double cone_volume(double r, double h) {
+	return PI * pow(r, 2) * h / 3.0;
+}
+
+double cone_surface(double r, double h) {
+	return PI * r * (r + sqrt(pow(h, 2) + pow(r, 2)));
+}
+
+int main()
+{
+	std::cout << "Please give the radius: ";
+	double r;
+	std::cin >> r;
+
+	std::cout << "Please give the height: ";
+	double h;
+	std::cin >> h;
+
+	std::cout << sphere_volume(r) << "\n" << sphere_surface(r) << "\n" << cylinder_volume(r, h) << "\n" << cylinder_surface(r, h) << "\n" << cone_volume(r, h) << "\n" << cone_surface(r, h) << "\n";
+
+    return 0;
+}
+

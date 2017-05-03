@@ -1,0 +1,37 @@
+// 2.6.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>>
+#include <math.h>
+
+int area(int a, int b)
+{
+	return a * b;
+}
+
+double diagonal(int a, int b)
+{
+	return std::sqrt(a*a + b*b);
+}
+
+int perimeter(int a, int b)
+{
+	return 2 * a + 2 * b;
+}
+
+int main()
+{
+	std::cout << "Please enter a length: \n";
+	int length;
+	std::cin >> length;
+	std::cout << "Please enter a width: \n";
+	int width;
+	std::cin >> width;
+
+	std::cout << "The area of a rectangle with the given length and width is: " << area(length, width) << std::endl;
+	std::cout << "The perimeter of a rectangle with the given length and width is: " << perimeter(length, width) << std::endl;
+	std::cout << "The diagonal of the rectangle is: " << diagonal(length, width) << std::endl;
+    return 0;
+}
+

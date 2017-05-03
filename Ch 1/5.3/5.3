@@ -1,0 +1,33 @@
+#include "Address.h"
+#include <iostream>
+
+Address::Address(int ahouse_number, std::string astreet, std::string acity, std::string astate, int apostal_code)
+{
+	house_number = ahouse_number;
+	street = astreet;
+	city = acity;
+	state = astate;
+	postal_code = apostal_code;
+}
+
+Address::Address(int ahouse_number, std::string astreet, std::string aapartment_number, std::string acity, std::string astate, int apostal_code)
+{
+	house_number = ahouse_number;
+	street = astreet;
+	apartment_number = aapartment_number;
+	city = acity;
+	state = astate;
+	postal_code = apostal_code;
+}
+
+void Address::print() const
+{
+	std::cout << house_number << street << std::endl;
+	std::cout << city << state << postal_code << std::endl;
+}
+
+bool Address::comes_before(Address other_address)
+{
+	return postal_code < other_address.postal_code;
+}
+

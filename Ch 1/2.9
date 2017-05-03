@@ -1,0 +1,65 @@
+// 2.9.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+
+//[Dollars, Quarters, Dimes, Nickels, Pennies]
+//Due and Recieved in Pennies
+std::vector<int> change(int due, int recieved) {
+	std::vector<int> to_return;
+	for (int i = 0; i < 5; i++)
+	{
+		to_return.push_back(0);
+	}
+	
+	int temp = recieved - due;
+	while (temp > 100)
+	{
+		temp -= 100;
+		to_return[0]++;
+	}
+	while (temp > 25)
+	{
+		temp -= 25;
+		to_return[1]++;
+	}
+	while (temp > 10)
+	{
+		temp -= 10;
+		to_return[2]++;
+	}
+	while (temp > 5)
+	{
+		temp -= 5;
+		to_return[3]++;
+	}
+	to_return[4] = temp;
+	return to_return;
+}
+
+int main()
+{
+	std::cout << "How much (in dollars), is due?\n";
+	double due_i;
+	std::cin >> due_i;
+	due_i *= 100;
+	int due = due_i;
+
+	std::cout << "How much (in dollars), was given?\n";
+	double given_i;
+	std::cin >> given_i;
+	given_i *= 100;
+	int given = given_i;
+
+	std::vector<int> to_give = change(due, given);
+
+	std::cout << "The cashier needs to give " << to_give[0] << " dollars, " << to_give[1] << " quarters, " << to_give[2] << " dimes, " << to_give[3] << " nickels, and " << to_give[4] << " pennies.\n";
+
+
+
+
+    return 0;
+}
+

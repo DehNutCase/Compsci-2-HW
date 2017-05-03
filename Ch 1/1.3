@@ -1,0 +1,24 @@
+// 1.3.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+
+
+int count(int n)
+{
+	int temp = 0;
+	for (int i = 0; i <= n; i++)
+	{
+		temp += i;
+	}
+	return temp;
+}
+
+
+int main()
+{
+	std::cout << count(10) << std::endl;
+    return 0;
+}
+

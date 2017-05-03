@@ -1,0 +1,29 @@
+// 3.12.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+
+
+bool is_leap(int n)
+{
+	if ((n % 400 == 0) || (n % 4 == 0 && n % 100 != 0))
+		return true;
+	return false;
+}
+
+
+
+int main()
+{
+	std::cout << "Enter the year: \n";
+	int year;
+	std::cin >> year;
+
+	std::cout << year << " is ";
+	if (!is_leap(year))
+		std::cout << "not ";
+	std::cout << "a leap year.\n";
+    return 0;
+}
+

@@ -1,0 +1,60 @@
+// 3.5.cpp : Defines the entry point for the console application.
+//
+
+
+//The directions make no sense, 2.8/4 * 100 = 70, which is an obvious C-, not a B.
+// x0 to x2 is a - grade. x7 to x9 is a + grade.
+// Grades are 90+ = A, 80+ = B, 70+ = C, 60+ = D, 
+//everything else F.
+
+#include "stdafx.h"
+#include <string>
+#include <iostream>
+
+std::string letter(double n)
+{
+	double grade = n * 100 / 4;
+	if (grade > 90)
+		return "A";
+	if (grade > 80)
+		return "B";
+	if (grade > 70)
+		return "C";
+	if (grade > 60)
+		return "D";
+	return "F";
+}
+
+std::string sign(double n, std::string letter)
+{
+	if (letter == "F")
+		return "";
+
+	int grade = n * 100 / 4;
+	if (grade > 97)
+		return "+";
+	if (grade % 10 >= 7)
+		return "+";
+	if (grade % 10 <= 2)
+		return "-";
+	return "";
+}
+
+
+
+int main()
+{
+	std::cout << "Please give the student's grade (on a 4.0 scale)\n";
+	double number_grade;
+	std::cin >> number_grade;
+
+	std::string letter_grade = letter(number_grade);
+	std::string sign_grade = sign(number_grade, letter_grade);
+
+	std::cout << "The student's grade is: " << letter_grade << sign_grade << std::endl;
+
+
+
+    return 0;
+}
+

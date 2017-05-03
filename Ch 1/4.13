@@ -1,0 +1,53 @@
+// 4.13.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <string>
+#include <iostream>
+
+int converter(char n)
+{
+	switch (n)
+	{
+	case 'M':
+		return 1000;
+		break;
+	case 'D':
+		return 500;
+		break;
+	case 'C':
+		return 100;
+		break;
+	case 'L':
+		return 50;
+		break;
+	case 'X':
+		return 10;
+		break;
+	case 'V':
+		return 5;
+		break;
+	case 'I':
+		return 1;
+		break;
+	}
+	return 0;
+}
+
+int main()
+{
+	std::cout << "Please enter a Roman Numeral:\n";
+	std::string roman_numeral;
+	std::cin >> roman_numeral;
+
+	int sum = 0;
+
+	for (int i = 0; i < roman_numeral.length(); i++)
+	{
+		sum += converter(roman_numeral[i]);
+	}
+
+	std::cout << "Your number is: " << sum << std::endl;
+    return 0;
+}
+

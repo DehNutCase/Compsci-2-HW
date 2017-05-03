@@ -1,0 +1,56 @@
+// 7.1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include "Person.h"
+#include <list>
+
+int main()
+{
+	std::cout << "Please enter the amount of names: ";
+	int number_of_names;
+	std::cin >> number_of_names;
+	std::cout << "Please enter a list of names.\n";
+	//Going to assume that names are inputted one by one, separated by pressing enter.
+	std::vector<std::string> names;
+	for (int i = 0; i < number_of_names; i++) {
+		std::string temp;
+		std::cin >> temp;
+		names.push_back(temp);
+	}
+
+	std::vector<Person*> persons;
+	for (int i = 0; i < number_of_names; i++) {
+		persons.push_back(new Person(names[i]));
+	}
+	std::cout << "Please enter the name of each person's best friend.\n";
+	//takes inputs assuming the best friend names are in the same order as the friends names. I.e. the first name inputed matches the first best friend name inputted.
+	
+	std::vector<std::string> best_friends;
+	for (int i = 0; i < number_of_names; i++) {
+		std::string temp;
+		std::cin >> temp;
+		best_friends.push_back(temp);
+	}
+
+	//the following is a hilariously inefficient way to figure out which best friend matches who, ask for better.
+	
+	
+	for (int i = 0; i < number_of_names; i++) {
+		for (int j = 0; j < number_of_names; j++) {
+			if (persons[j]->get_name() == best_friends[i]) {
+				persons[i]->set_best_friend(persons[j]);
+				break;
+			}
+		}
+	}
+
+	for (int i = 0; i < number_of_names; i++) {
+		std::cout << persons[i]->get_name() << " has a best friend called " << persons[i]->get_best_friend() << " and " << persons[i]->get_best_friends_amount() << " people who calls them best friend.\n";
+	}
+	
+    return 0;
+}
+

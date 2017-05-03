@@ -1,0 +1,36 @@
+// 1.4.cpp : Defines the entry point for the console application.
+//
+
+
+#include "stdafx.h"
+#include <iostream>
+
+
+int sum_product(int n)
+{
+	int temp = 1;
+	for (int i = 1; i <= n; i++)
+	{
+		temp *= i;
+	}
+	return temp;
+}
+
+double sum_reciprocal(int n)
+{
+	double temp = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		double div = i;
+		temp += 1 / div;
+	}
+	return temp;
+}
+
+
+int main()
+{
+	std::cout << sum_product(10) << std::endl;
+	std::cout << sum_reciprocal(10) << std::endl;
+	return 0;
+}

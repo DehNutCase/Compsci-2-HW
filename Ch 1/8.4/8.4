@@ -1,0 +1,34 @@
+// 8.4.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Checking.h"
+#include "Savings.h"
+#include <iostream>
+
+
+int main()
+{
+	Checking my_checking(0);
+	Savings my_saving(0);
+
+
+
+	for (int i = 0; i < 30; i++)
+	{
+		std::cout << "Please enter today's deposits: ";
+		double temp;
+		std::cin >> temp;
+		my_checking.deposit(temp);
+
+		std::cout << "Please enter today's withdrawals: ";
+		std::cin >> temp;
+		my_checking.withdraw(temp);
+
+		my_checking.daily_interest();
+	}
+
+	std::cout << "Your balance is now : " << my_checking.get_balance() << std::endl;
+    return 0;
+}
+

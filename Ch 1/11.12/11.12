@@ -1,0 +1,62 @@
+// 11.12.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <algorithm>
+#include <iostream>
+#include "Appointment.h"
+#include <vector>
+
+bool appointment_sort(Appointment a, Appointment b) {
+	if (a.get_day() != b.get_day())
+	{
+		return a.get_day() < b.get_day();
+	}
+	else
+	{
+		return a.get_time() < b.get_time();
+	}
+}
+
+void appointment_insert(std::vector<Appointment>& a, Appointment b){
+	bool share_time = false;
+	
+	for (int i = 0; i < a.size(); i++) {
+		if (a[i].get_day() == b.get_day()) {
+			if (a[i].get_time() < b.get_time() && a[i].get_etime() > b.get_time())
+			{
+				share_time = true;
+			}
+			if (a[i].get_time() > b.get_time() && a[i].get_time() < b.get_etime()) {
+				share_time = true;
+			}
+		}
+	}
+
+	if (share_time)
+	{
+		return;
+	}
+	else
+		a.push_back(b);
+}
+
+
+int main()
+{
+	//sort with std::sort (vector.begin(), vector.end, appointment_sort);
+	std::vector<Appointment> my_appointments;
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 10; j++) {
+			appointment_insert(my_appointments, Appointment("Something", i, j, j + 1));
+		}
+	}
+
+	sort(my_appointments.begin(), my_appointments.end(), appointment_sort);
+
+	for (int i = 0; i < my_appointments.size(); i++) {
+		std::cout << "You have an appointment on day: " << my_appointments[i].get_day() << " at " << my_appointments[i].get_time() << " o'clock." << std::endl;
+	}
+    return 0;
+}
+

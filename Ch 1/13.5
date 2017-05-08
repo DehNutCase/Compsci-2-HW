@@ -1,0 +1,39 @@
+// 13.5.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <map>
+#include <string>
+#include <iostream>
+#include <fstream>
+
+
+//takes a file and turns it in a map
+//the word is the key, and the value is the number of time the word appears
+std::map<std::string, int> take_file(std::string file_name) {
+	std::ifstream file;
+	file.open(file_name);
+	std::map<std::string, int> to_return;
+	std::string word;
+	while (file >> word) {
+		if (to_return.count(word) != 0) {
+			to_return[word] += 1;
+		}
+		else {
+			to_return[word] = 1;
+		}
+	}
+	return to_return;
+}
+
+void count_words(std::map<std::string, int> a) {
+	for (std::map<std::string, int>::iterator i = a.begin(); i != a.end(); i++) {
+		std::cout << i->first << " appears in the file " << i->second << " times.\n";
+	}
+}
+
+int main()
+{
+    return 0;
+}
+

@@ -1,0 +1,54 @@
+// 13.3.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <set>
+#include <math.h>
+
+//return a set of all primes less than n
+
+std::set<int> prime(int n) {
+	std::set<int> to_return;
+	//initialize to_return with integers from 1 to n
+	for (int i = 1; i <= n; i++) {
+		to_return.insert(i);
+	}
+
+	//remove all multiples of 2 to sqrt(n)
+	//that is, remove all multiples of 2, then multiples of 3, etc.
+	//until all multiples of sqrt(n) are removed.
+	//going to remove up to sqrt(n) + 1 instead to be safe
+
+	//need to create a to_erase set due to weird issues with for loop iteration
+	//if you remove in the middle of looping
+
+	std::set<int> to_erase;
+
+	for (int i = 2; i <= std::sqrt(n) + 1; i++) {
+		for (std::set<int>::iterator j = to_return.begin(); j != to_return.end(); j++)
+		{
+			if (i != *j && *j%i == 0) {
+				to_erase.insert(*j);
+			}
+		}
+	}
+	//erase everything to be erased
+	for (std::set<int>::iterator i = to_erase.begin(); i != to_erase.end(); i++) {
+		to_return.erase(*i);
+	}
+
+	return to_return;
+}
+
+
+int main()
+{
+	std::set<int> primes = prime(100);
+	for (std::set<int>::iterator i = primes.begin(); i != primes.end(); i++)
+	{
+		std::cout << *i << std::endl;
+	}
+    return 0;
+}
+

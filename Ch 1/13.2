@@ -1,0 +1,43 @@
+// 13.2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <set>
+#include <iostream>
+
+
+//union is just shoving contents of both sets into 1 set
+//not a multiset, so duplicates are automatically removed
+std::set<int> set_union(std::set<int> a, std::set<int> b) {
+	std::set<int> to_return;
+	for (std::set<int>::iterator i = a.begin(); i != a.end(); i++) {
+		to_return.insert(*i);
+	}
+	for (std::set<int>::iterator j = b.begin(); j != b.end(); j++) {
+		to_return.insert(*j);
+	}
+	return to_return;
+}
+
+//intersection is where both sets contain one thing
+//iterates through set a, checking if b has the element, if yes, adds it to the set to return
+
+std::set<int> set_intersection(std::set<int> a, std::set<int> b) {
+	std::set<int> to_return;
+	for (std::set<int>::iterator i = a.begin(); i != a.end(); i++) {
+		for (std::set<int>::iterator j = b.begin(); j != b.end(); j++) {
+			if (*i == *j) {
+				to_return.insert(*i);
+			}
+		}
+	}
+	return to_return;
+}
+
+
+
+int main()
+{
+    return 0;
+}
+

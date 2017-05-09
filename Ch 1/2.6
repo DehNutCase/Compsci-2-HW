@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include <iostream>>
+#include <iostream>
 #include <math.h>
 
 int area(int a, int b)
@@ -12,7 +12,10 @@ int area(int a, int b)
 
 double diagonal(int a, int b)
 {
-	return std::sqrt(a*a + b*b);
+	double a1 = a * a;
+	double b1 = b * b;
+	double to_return = std::sqrt (a1 + b1);
+	return to_return;
 }
 
 int perimeter(int a, int b)
